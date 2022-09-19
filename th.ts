@@ -42,10 +42,10 @@ async function thesaurus(term: string) {
     return;
 }
 
-const term = Deno.args.length > 0 ? Deno.args[0] : await input("Enter a term to lookup: ");
+const term = Deno.args.length > 0 && Deno.args[0] != 'no-exit' ? Deno.args[0] : await input("Enter a term to lookup: ");
 await thesaurus(term);
 
-
-// press enter to exit
-console.log(`%cPress 'Enter' to exit.`, 'color: blue; font-weight: bold;');
-await Deno.stdin.read(new Uint8Array(1));
+if (Deno.args.includes('no-exit')) {
+    console.log(`%cPress 'Enter' to exit.`, 'color: blue; font-weight: bold;');
+    await Deno.stdin.read(new Uint8Array(1));
+}
