@@ -6,7 +6,7 @@ import { load } from 'https://cdn.skypack.dev/cheerio'
 
 const input = async () => {
     const buffer = new Uint8Array(1024);
-    Deno.stdout.writeSync(new TextEncoder().encode('Enter a term to lookup: '));
+    console.log('%cEnter a term to lookup: ', 'color: blue; font-weight: bold;');
     const number = await Deno.stdin.read(buffer);
 
     // throw error if no input
@@ -35,9 +35,9 @@ async function thesaurus(term: string) {
     }
 
     const [synonyms, antonyms] = content.split('; ');
-    console.log(`\n${synonyms}`);
+    console.log(`\n%c${synonyms}`, 'color: green; font-weight: bold;');
     
-    antonyms ? console.log(`\n${antonyms}`) : console.log(`\nNo antonyms found for ${term.toUpperCase()}.`);
+    antonyms ? console.log(`\n%c${antonyms}\n`, 'color: red; font-weight: bold') : console.log(`\nNo antonyms found for ${term.toUpperCase()}.`);
     return;
 }
 
