@@ -41,7 +41,9 @@ async function thesaurus(term: string) {
     return;
 }
 
-Deno.args.length > 0 ? await thesaurus(Deno.args[0]) : await input("Enter a term to lookup: ").then((term) => thesaurus(String(term)));
+const term = Deno.args.length > 0 ? Deno.args[0] : await input("Enter a term to lookup: ");
+await thesaurus(term);
+
 
 // press enter to exit
 console.log(`\n%cPress 'Enter' to exit.`, 'color: blue; font-weight: bold;');
