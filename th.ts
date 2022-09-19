@@ -46,5 +46,5 @@ await thesaurus(term);
 
 
 // press enter to exit
-console.log(`\n%cPress 'Enter' to exit.`, 'color: blue; font-weight: bold;');
+console.log(`%cPress 'Enter' to exit.`, 'color: blue; font-weight: bold;');
 await Deno.stdin.read(new Uint8Array(1));
