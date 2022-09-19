@@ -18,6 +18,7 @@ const input = async () => {
     if (term == undefined || term.at(0) == '\n') {
         throw new Error('Invalid search term.');
     }
+    return term;
 }
 
 async function thesaurus(term: string) {
