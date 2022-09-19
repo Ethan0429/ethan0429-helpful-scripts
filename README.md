@@ -53,22 +53,22 @@ no-exit # keeps stdin open even after finished query - should be the last arg
 Run remotely:
 
 ```
-$ deno run --allow-net https://raw.githubusercontent.com/Ethan0429/ethan0429-helpful-scripts/main/th.ts
+$ deno run --allow-net=www.merriam-webster.com https://raw.githubusercontent.com/Ethan0429/ethan0429-helpful-scripts/main/th.ts
 ```
 
 Run locally:
 
 ```
-$ deno run --allow-net th.ts
+$ deno run --allow-net=www.merriam-webster.com th.ts
 ```
 
 Install locally/remotely:
 
 ```bash
 # local
-$ deno install --allow-net th.ts
+$ deno install --allow-net=www.merriam-webster.com th.ts
 # remote
-$ deno install --allow-net https://raw.githubusercontent.com/Ethan0429/ethan0429-helpful-scripts/main/th.ts
+$ deno install --allow-net=www.merriam-webster.com https://raw.githubusercontent.com/Ethan0429/ethan0429-helpful-scripts/main/th.ts
 # usage example after install
 $ th peachy no-exit
 ```
