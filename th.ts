@@ -4,9 +4,9 @@
 import { load } from 'https://cdn.skypack.dev/cheerio'
 
 
-const input = async () => {
+const input = async (prompt: String) => {
     const buffer = new Uint8Array(1024);
-    console.log('%cEnter a term to lookup: ', 'color: blue; font-weight: bold;');
+    console.log(`%c${prompt}`, 'color: blue; font-weight: bold;');
     const number = await Deno.stdin.read(buffer);
 
     // throw error if no input
@@ -30,15 +30,19 @@ async function thesaurus(term: string) {
     const content = handle('meta[name=description]').attr('content');
 
     if (content == null) {
-        console.log(`\nNo synonyms found for ${term.toUpperCase()}.`);
+        console.log(`\n%cNo synonyms found for ${term.toUpperCase()}.`, 'color: red; font-weight: bold;');
         return;
     }
 
     const [synonyms, antonyms] = content.split('; ');
     console.log(`\n%c${synonyms}`, 'color: green; font-weight: bold;');
     
-    antonyms ? console.log(`\n%c${antonyms}\n`, 'color: red; font-weight: bold') : console.log(`\nNo antonyms found for ${term.toUpperCase()}.`);
+    antonyms ? console.log(`\n%c${antonyms}\n`, 'color: red; font-weight: bold') : console.log(`\n%cNo antonyms found for ${term.toUpperCase()}.`, 'color: red; font-weight: bold');
     return;
 }
 
-Deno.args.length > 0 ? await thesaurus(Deno.args[0]) : await input().then((term) => thesaurus(String(term)));
+Deno.args.length > 0 ? await thesaurus(Deno.args[0]) : await input("Enter a term to lookup: ").then((term) => thesaurus(String(term)));
+
+// press enter to exit
+console.log(`\n%cPress 'Enter' to exit.`, 'color: blue; font-weight: bold;');
+await Deno.stdin.read(new Uint8Array(1));
