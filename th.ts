@@ -2,11 +2,12 @@
 // deno run --allow-net th.ts
 
 import { load } from 'https://cdn.skypack.dev/cheerio'
+import * as Colors from "https://deno.land/std@0.156.0/fmt/colors.ts";
 
-
-const input = async (prompt: String) => {
+const input = async (prompt: string) => {
+    // prompt user for input deno style
+    await Deno.stdout.write(new TextEncoder().encode(Colors.blue(Colors.bold(prompt))));
     const buffer = new Uint8Array(1024);
-    console.log(`%c${prompt}`, 'color: blue; font-weight: bold;');
     const number = await Deno.stdin.read(buffer);
 
     // throw error if no input
