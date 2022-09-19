@@ -29,8 +29,8 @@ $ ./config.sh
 
 Removes a substring `s` from all file names in the current directory.
 
-```
-$ ./batch-rename txt
+```bash
+$ ./batch-rename txt # s == txt
 renamed 'abcdtxt' -> 'abcd'
 renamed 'txtabc' -> 'abc'
 renamed 'urtxtmom' -> 'urmom'
@@ -38,7 +38,7 @@ renamed 'urtxtmom' -> 'urmom'
 
 ### th.ts
 
-Queries [Merriam Webster](https://www.merriam-webster.com) for synonyms/antonyms related to term `t`
+Simple thesaurus CLI queries [Merriam Webster](https://www.merriam-webster.com) for synonyms/antonyms related to term `t` and prints results accordingly.
 
 Requires [deno](https://deno.land/manual@v1.25.3/getting_started/installation) for a JS/TS browser-like runtime
 
@@ -46,7 +46,7 @@ Optional args:
 
 ```bash
 no-exit # keeps stdin open even after finished query - should be the last arg
-[term]  # the term being searched.
+[t]     # the term being searched.
         # term will be prompted for interactively if no argument is provided
 ```
 
